@@ -15,9 +15,11 @@ spa.shell = (function () {
             chat_extnd_time: 1000,
             chat_retract_time: 300,
             chat_extend_height: 450,
-            chat_retract_height: 15
+            chat_retract_height: 15,
+            chat_extended_title: 'Click to retract',
+            chat_retracted_title: 'Click to extend'
         },
-        stateMap = {$container: null},
+        stateMap = {$container: null, is_chat_retracted: true},
         jqueryMap = {},
         setJqueryMap, initModule, toggleChat;
     setJqueryMap = function () {
@@ -41,15 +43,21 @@ spa.shell = (function () {
                 height: configMap.chat_extend_height
 
             }, configMap.chat_extnd_time, function () {
+
+                jqueryMap.$chat.attr('title', configMap.chat_extended_title);
+                stateMap.is_chat_retracted = false;
                 if (callback) {
                     callback(jqueryMap.$chat);
                 }
+
             });
             return true;
         }
         jqueryMap.$chat.animate({height: configMap.chat_retract_height},
             configMap.chat_retract_time,
             function () {
+                jqueryMap.$chat.attr('title', configMap.chat_retracted_title);
+                stateMap.is_chat_retracted = true;
                 if (callback) {
                     callback(jqueryMap.$chat);
                 }
@@ -60,18 +68,25 @@ spa.shell = (function () {
     };
     //toggleChat
 
+    //event handle
+    onClickChat = function (event) {
+        toggleChat(stateMap.is_chat_retracted);
+        return false;
+    };
+    //event handle
 
     initModule = function ($container) {
         stateMap.$container = $container;
         $container.html(configMap.main_html);
         setJqueryMap();
-        setTimeout(function(){
-            toggleChat(true);
-        },3000);
-
-        setTimeout(function(){
-            toggleChat(false);
-        },8000);
+        jqueryMap.$chat.attr('title',configMap.chat_retracted_title).click(onClickChat);
+        //setTimeout(function () {
+        //    toggleChat(true);
+        //}, 3000);
+        //
+        //setTimeout(function () {
+        //    toggleChat(false);
+        //}, 8000);
 
 
     };
