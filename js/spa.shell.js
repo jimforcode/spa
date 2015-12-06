@@ -163,6 +163,8 @@ spa.shell = (function () {
         //}, 8000);
 
         $.uriAnchor.configModule({schema_map:configMap.anchar_schema_map});
+        spa.chat.cofigModule({});
+        spa.chat.initModule(jqueryMap.$chat);
         $(window).bind('hashchange',onHashchange).trigger('hashchange');
 
     };
