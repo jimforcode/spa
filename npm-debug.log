@@ -1,0 +1,152 @@
+0 info it worked if it ends with ok
+1 info error reading version TypeError: Cannot read property 'node' of undefined
+1 info error reading version     at /usr/local/lib/node_modules/npm/lib/npm.js:61:38
+1 info error reading version     at Object.<anonymous> (/usr/local/lib/node_modules/npm/lib/npm.js:520:3)
+1 info error reading version     at Module._compile (module.js:456:26)
+1 info error reading version     at Object.Module._extensions..js (module.js:474:10)
+1 info error reading version     at Module.load (module.js:356:32)
+1 info error reading version     at Function.Module._load (module.js:312:12)
+1 info error reading version     at Module.require (module.js:364:17)
+1 info error reading version     at require (module.js:380:17)
+1 info error reading version     at /usr/local/lib/node_modules/npm/bin/npm-cli.js:25:11
+1 info error reading version     at Object.<anonymous> (/usr/local/lib/node_modules/npm/bin/npm-cli.js:87:3)
+1 info error reading version  [TypeError: Cannot read property 'node' of undefined]
+2 verbose cli [ '/usr/local/bin/node',
+2 verbose cli   '/usr/local/bin/npm',
+2 verbose cli   'install',
+2 verbose cli   'art-template',
+2 verbose cli   '-g' ]
+3 info using TypeError: Cannot read property 'node' of undefined
+3 info using     at /usr/local/lib/node_modules/npm/lib/npm.js:61:38
+3 info using     at Object.<anonymous> (/usr/local/lib/node_modules/npm/lib/npm.js:520:3)
+3 info using     at Module._compile (module.js:456:26)
+3 info using     at Object.Module._extensions..js (module.js:474:10)
+3 info using     at Module.load (module.js:356:32)
+3 info using     at Function.Module._load (module.js:312:12)
+3 info using     at Module.require (module.js:364:17)
+3 info using     at require (module.js:380:17)
+3 info using     at /usr/local/lib/node_modules/npm/bin/npm-cli.js:25:11
+3 info using     at Object.<anonymous> (/usr/local/lib/node_modules/npm/bin/npm-cli.js:87:3)
+3 info using  npm@%s [TypeError: Cannot read property 'node' of undefined]
+4 info using node@v0.10.21
+5 verbose cache add [ 'art-template', null ]
+6 verbose cache add name=undefined spec="art-template" args=["art-template",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'art-template',
+7 verbose parsed url   path: 'art-template',
+7 verbose parsed url   href: 'art-template' }
+8 silly lockFile 5b2a4065-art-template art-template
+9 verbose lock art-template /Users/zj/.npm/5b2a4065-art-template.lock
+10 silly lockFile 5b2a4065-art-template art-template
+11 silly lockFile 5b2a4065-art-template art-template
+12 verbose addNamed [ 'art-template', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile e3d664a2-art-template art-template@
+15 verbose lock art-template@ /Users/zj/.npm/e3d664a2-art-template.lock
+16 silly addNameRange { name: 'art-template', range: '*', hasData: false }
+17 verbose url raw art-template
+18 verbose url resolving [ 'http://registry.npmjs.org/', './art-template' ]
+19 verbose url resolved http://registry.npmjs.org/art-template
+20 info trying registry request attempt 1 at 11:37:12
+21 http GET http://registry.npmjs.org/art-template
+22 http 200 http://registry.npmjs.org/art-template
+23 silly registry.get cb [ 200,
+23 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+23 silly registry.get     etag: '"44FZS6K7D05592UNJ2457HHEW"',
+23 silly registry.get     'content-type': 'application/json',
+23 silly registry.get     'cache-control': 'max-age=60',
+23 silly registry.get     'content-length': '22899',
+23 silly registry.get     'accept-ranges': 'bytes',
+23 silly registry.get     date: 'Mon, 07 Dec 2015 03:37:17 GMT',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     age: '0',
+23 silly registry.get     connection: 'keep-alive',
+23 silly registry.get     'x-served-by': 'cache-nrt6132-NRT',
+23 silly registry.get     'x-cache': 'MISS',
+23 silly registry.get     'x-cache-hits': '0',
+23 silly registry.get     'x-timer': 'S1449459437.544186,VS0,VE243',
+23 silly registry.get     vary: 'Accept' } ]
+24 silly addNameRange number 2 { name: 'art-template', range: '*', hasData: true }
+25 silly addNameRange versions [ 'art-template',
+25 silly addNameRange   [ '2.0.2',
+25 silly addNameRange     '2.0.3',
+25 silly addNameRange     '2.0.3-rc1',
+25 silly addNameRange     '2.0.3-rc2',
+25 silly addNameRange     '2.0.3-rc3',
+25 silly addNameRange     '2.0.3-rc4',
+25 silly addNameRange     '2.0.3-rc5',
+25 silly addNameRange     '2.0.4',
+25 silly addNameRange     '3.0.0',
+25 silly addNameRange     '3.0.1',
+25 silly addNameRange     '3.0.2',
+25 silly addNameRange     '3.0.2-rc1',
+25 silly addNameRange     '3.0.2-rc2',
+25 silly addNameRange     '3.0.3' ] ]
+26 verbose addNamed [ 'art-template', '3.0.3' ]
+27 verbose addNamed [ '3.0.3', '3.0.3' ]
+28 silly lockFile 72a9bc54-art-template-3-0-3 art-template@3.0.3
+29 verbose lock art-template@3.0.3 /Users/zj/.npm/72a9bc54-art-template-3-0-3.lock
+30 silly lockFile d5f4c3ac--template-art-template-3-0-3-tgz http://registry.npmjs.org/art-template/-/art-template-3.0.3.tgz
+31 verbose lock http://registry.npmjs.org/art-template/-/art-template-3.0.3.tgz /Users/zj/.npm/d5f4c3ac--template-art-template-3-0-3-tgz.lock
+32 verbose addRemoteTarball [ 'http://registry.npmjs.org/art-template/-/art-template-3.0.3.tgz',
+32 verbose addRemoteTarball   '544b2be25f95d661984db4ee53ac316e57fbae14' ]
+33 info retry fetch attempt 1 at 11:37:18
+34 verbose fetch to= /var/folders/4f/gc86zk513ll3ptn_0pwrr23r0000gn/T/npm-1111-TIrgnNud/1449459438137-0.49246018938720226/tmp.tgz
+35 http GET http://registry.npmjs.org/art-template/-/art-template-3.0.3.tgz
+36 http 200 http://registry.npmjs.org/art-template/-/art-template-3.0.3.tgz
+37 verbose tar unpack /var/folders/4f/gc86zk513ll3ptn_0pwrr23r0000gn/T/npm-1111-TIrgnNud/1449459438137-0.49246018938720226/tmp.tgz
+38 silly lockFile 2b351a3c-8137-0-49246018938720226-package tar:///var/folders/4f/gc86zk513ll3ptn_0pwrr23r0000gn/T/npm-1111-TIrgnNud/1449459438137-0.49246018938720226/package
+39 verbose lock tar:///var/folders/4f/gc86zk513ll3ptn_0pwrr23r0000gn/T/npm-1111-TIrgnNud/1449459438137-0.49246018938720226/package /Users/zj/.npm/2b351a3c-8137-0-49246018938720226-package.lock
+40 silly lockFile ed6b2f0a-8137-0-49246018938720226-tmp-tgz tar:///var/folders/4f/gc86zk513ll3ptn_0pwrr23r0000gn/T/npm-1111-TIrgnNud/1449459438137-0.49246018938720226/tmp.tgz
+41 verbose lock tar:///var/folders/4f/gc86zk513ll3ptn_0pwrr23r0000gn/T/npm-1111-TIrgnNud/1449459438137-0.49246018938720226/tmp.tgz /Users/zj/.npm/ed6b2f0a-8137-0-49246018938720226-tmp-tgz.lock
+42 error TypeError: Object function glob(pattern, options, cb) {
+42 error   if (typeof options === "function") cb = options, options = {}
+42 error   if (!options) options = {}
+42 error
+42 error   if (typeof options === "number") {
+42 error     deprecated()
+42 error     return
+42 error   }
+42 error
+42 error   var g = new Glob(pattern, options, cb)
+42 error   return g.sync ? g.found : g
+42 error } has no method 'hasMagic'
+42 error     at rimraf (/usr/local/lib/node_modules/npm/node_modules/rimraf/rimraf.js:59:36)
+42 error     at rmGunz (/usr/local/lib/node_modules/npm/lib/utils/tar.js:171:5)
+42 error     at next (/usr/local/lib/node_modules/npm/lib/utils/tar.js:167:5)
+42 error     at /usr/local/lib/node_modules/npm/lib/utils/tar.js:162:5
+42 error     at /usr/local/lib/node_modules/npm/lib/cache.js:1218:7
+42 error     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:143:23
+42 error     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:161:16
+42 error     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:103:5
+42 error     at Object.oncomplete (fs.js:107:15)
+43 error If you need help, you may report this log at:
+43 error     <http://github.com/isaacs/npm/issues>
+43 error or email it to:
+43 error     <npm-@googlegroups.com>
+44 error System Darwin 15.0.0
+45 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "art-template" "-g"
+46 error cwd /Users/zj/web/spa/spa
+47 error node -v v0.10.21
+48 error npm -v TypeError: Cannot read property 'node' of undefined
+48 error npm -v     at /usr/local/lib/node_modules/npm/lib/npm.js:61:38
+48 error npm -v     at Object.<anonymous> (/usr/local/lib/node_modules/npm/lib/npm.js:520:3)
+48 error npm -v     at Module._compile (module.js:456:26)
+48 error npm -v     at Object.Module._extensions..js (module.js:474:10)
+48 error npm -v     at Module.load (module.js:356:32)
+48 error npm -v     at Function.Module._load (module.js:312:12)
+48 error npm -v     at Module.require (module.js:364:17)
+48 error npm -v     at require (module.js:380:17)
+48 error npm -v     at /usr/local/lib/node_modules/npm/bin/npm-cli.js:25:11
+48 error npm -v     at Object.<anonymous> (/usr/local/lib/node_modules/npm/bin/npm-cli.js:87:3)
+48 error npm -v  [TypeError: Cannot read property 'node' of undefined]
+49 error type undefined_method
+50 verbose exit [ 1, true ]

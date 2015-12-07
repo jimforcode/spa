@@ -1,7 +1,7 @@
 spa.shell = (function () {
     var configMap = {
             anchar_schema_map: {
-                chat: {open: true, closed: true}
+                chat: {opened: true, closed: true}
             },
             main_html: String() + '<div class="spa-shell-head">'
             + '<div class="spa-shell-head-logo"></div>'
@@ -13,26 +13,38 @@ spa.shell = (function () {
             + '  <div class="spa-shell-main-content"></div>'
             + '</div>'
             + '  <div class="spa-shell-foot"></div>'
-            + '  <div class="spa-shell-chat"></div>'
             + '   <div class="spa-shell-modal"></div>',
             chat_extnd_time: 1000,
             chat_retract_time: 300,
             chat_extend_height: 450,
             chat_retract_height: 15,
             chat_extended_title: 'Click to retract',
-            chat_retracted_title: 'Click to extend'
+            chat_retracted_title: 'Click to extend',
+            resize_interval:200
 
         },
         stateMap = {
-            $container: null,
-            is_chat_retracted: true,
-            anchar_map: {}
+            $container:undefined,
+            anchar_map: {},
+            resize_idto:undefined
         },
         jqueryMap = {},
-        setJqueryMap, initModule, toggleChat, copyAncharMap,
-        changeAnchorPart, onHashchange, onClickChat, initModule;
+        setJqueryMap, initModule, toggleChat, copyAncharMap,setChatAnchor,
+        changeAnchorPart, onHashchange, onClickChat, initModule,onResize;
     copyAncharMap = function () {
         return $.extend(true, {}, stateMap.anchar_map);
+    };
+
+    onResize= function () {
+      if(stateMap.resize_idto){return true}
+        spa.chat.handleResize();
+        stateMap.resize_idto=setTimeout(
+            function () {
+            stateMap.resize_idto = undefined;
+            },
+            configMap.resize_interval
+        );
+       return true;
     };
     changeAnchorPart = function (arg_map) {
         var anchor_map_revise = copyAncharMap(), bool_return = true,
@@ -66,10 +78,13 @@ spa.shell = (function () {
 
     };
     onHashchange = function(event){
-        var anchor_map_previous= copyAncharMap(),
-            anchor_map_proposed,
+        var
+
             _s_chat_previous,_s_chat_proposed,
-            s_chat_proposed;
+            s_chat_proposed,
+            anchor_map_proposed,
+            is_ok = true,
+           anchor_map_previous= copyAncharMap();
         try{
             anchor_map_proposed= $.uriAnchor.makeAnchorMap();
         }catch(error){
@@ -82,11 +97,26 @@ spa.shell = (function () {
         if(!anchor_map_previous || _s_chat_previous!==_s_chat_proposed){
             s_chat_proposed = anchor_map_proposed.chat;
             switch (s_chat_proposed){
-                case 'open':toggleChat(true);break;
-                case 'closed':toggleChat(false);break;
-                default :toggleChat(false);
+                case 'opened':
+                    is_ok = spa.chat.setSliderPosition('opened');
+                     break;
+                case 'closed':
+                    is_ok = spa.chat.setSliderPosition('closed');
+                 break;
+                default :
+                    spa.chat.setSliderPosition('closed');
                     delete  anchor_map_proposed.chat;
                     $.uriAnchor.setAnchor(anchor_map_proposed,null,true);
+            }
+        }
+
+        if(!is_ok){
+            if(anchor_map_previous){
+                $.uriAnchor.setAnchor(anchor_map_previous,null,true);
+                stateMap.anchar_map=anchor_map_previous;
+            }else{
+                delete  anchor_map_proposed.chat;
+                $.uriAnchor.setAnchor(anchor_map_proposed,null,true);
             }
         }
 
@@ -94,11 +124,14 @@ spa.shell = (function () {
 
 
     };
+
+    setChatAnchor = function(position_type){
+        return changeAnchorPart({chat:position_type});
+    };
     setJqueryMap = function () {
         var $container = stateMap.$container;
         jqueryMap = {
-            $container: $container,
-            $chat: $container.find('.spa-shell-chat')
+            $container: $container
         };
     };
     //toggleChat
@@ -153,19 +186,17 @@ spa.shell = (function () {
         stateMap.$container = $container;
         $container.html(configMap.main_html);
         setJqueryMap();
-        jqueryMap.$chat.attr('title', configMap.chat_retracted_title).click(onClickChat);
-        //setTimeout(function () {
-        //    toggleChat(true);
-        //}, 3000);
-        //
-        //setTimeout(function () {
-        //    toggleChat(false);
-        //}, 8000);
+        //jqueryMap.$chat.attr('title', configMap.chat_retracted_title).click(onClickChat);
+
 
         $.uriAnchor.configModule({schema_map:configMap.anchar_schema_map});
-        spa.chat.cofigModule({});
-        spa.chat.initModule(jqueryMap.$chat);
-        $(window).bind('hashchange',onHashchange).trigger('hashchange');
+        spa.chat.configModule({
+            set_chat_anchor:setChatAnchor,
+            chat_model:spa.model.chat,
+            people_model:spa.model.people
+        });
+        spa.chat.initModule(jqueryMap.$container);
+        $(window).bind('resize',onResize).bind('hashchange',onHashchange).trigger('hashchange');
 
     };
     return {initModule: initModule};
